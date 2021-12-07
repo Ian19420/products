@@ -15,12 +15,15 @@ with open('products.csv', 'w', encoding = 'utf8') as f:
 	for p in products:
 		f.write(p[0]+ ','+ p[1]+ '\n')
 
-
+import os
 products_input = []
-
-with open('products.csv', encoding = 'utf8') as f:
-	for line in f:
-		if "商品, 價格" in line:
-			continue
-		products_input += line.strip().split(',')
-print(products_input)
+if os.path.isfile('products.csv'):
+	print("找到檔案了")
+    with open('products.csv', encoding = 'utf8') as f:
+	    for line in f:
+		    if "商品, 價格" in line:
+			    continue
+		    products_input += line.strip().split(',')
+		    print(products_input)
+else:
+	print("找不到檔案")
