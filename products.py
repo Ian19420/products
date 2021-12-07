@@ -14,3 +14,13 @@ with open('products.csv', 'w', encoding = 'utf8') as f:
 	f.write('商品, 價格\n')
 	for p in products:
 		f.write(p[0]+ ','+ p[1]+ '\n')
+
+
+products_input = []
+
+with open('products.csv', encoding = 'utf8') as f:
+	for line in f:
+		if "商品, 價格" in line:
+			continue
+		products_input += line.strip().split(',')
+print(products_input)
